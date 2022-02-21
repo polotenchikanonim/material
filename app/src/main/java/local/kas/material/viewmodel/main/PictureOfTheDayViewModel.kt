@@ -32,14 +32,13 @@ class PictureOfTheDayViewModel(
                             response.body()?.let {
                                 liveData.postValue(PictureOfTheDayData.Success(it))
                             }
-
                         } else {
                             println(response.code())
                         }
                     }
 
                     override fun onFailure(call: Call<PDOServerResponse>, t: Throwable) {
-                        TODO("Not yet implemented")
+                        println()
                     }
 
                 }
