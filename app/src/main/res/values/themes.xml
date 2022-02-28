@@ -16,13 +16,13 @@
         <item name="colorTertiaryContainer">?superColor</item>
         <item name="colorOnTertiaryContainer">?superColor</item>
         <item name="android:statusBarColor">?superColor</item>
-<!--        <item name="chipStyle">@style/myChipStyle</item>-->
+        <!--        <item name="chipStyle">@style/myChipStyle</item>-->
         <item name="bottomAppBarStyle">@style/myBottomAppBarStyle</item>
-<!--        <item name="tabStyle">@style/myTabStyle</item>-->
-<!--        <item name="textAppearanceHeadline1">@style/MyTextAppearanceHeadline1</item>-->
-<!--        <item name="materialButtonStyle">@style/myMaterialButtonStyle</item>-->
-<!--        <item name="materialCardViewStyle">@style/myMaterialCardViewStyle</item>-->
-<!--        <item name="bottomNavigationStyle">@style/myBottomNavigationStyle</item>-->
+        <!--        <item name="tabStyle">@style/myTabStyle</item>-->
+        <!--        <item name="textAppearanceHeadline1">@style/MyTextAppearanceHeadline1</item>-->
+        <!--        <item name="materialButtonStyle">@style/myMaterialButtonStyle</item>-->
+        <!--        <item name="materialCardViewStyle">@style/myMaterialCardViewStyle</item>-->
+        <!--        <item name="bottomNavigationStyle">@style/myBottomNavigationStyle</item>-->
     </style>
 
     <style name="MyThemeGreen" parent="MyBaseTheme">

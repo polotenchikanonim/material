@@ -2,9 +2,9 @@ package local.kas.material.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import local.kas.material.view.main.MainFragment
 import local.kas.material.R
 import local.kas.material.databinding.ActivityMainBinding
+import local.kas.material.view.base_fragments.main.MainFragment
 
 
 //Создайте первый экран приложения с фотографией дня. done

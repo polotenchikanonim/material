@@ -1,46 +1,24 @@
-package local.kas.material.view.settings
+package local.kas.material.view.base_fragments.settings
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.fragment.app.Fragment
 import com.google.android.material.chip.Chip
 import com.google.android.material.tabs.TabLayout
 import local.kas.material.R
 import local.kas.material.databinding.FragmentSettingsBinding
 import local.kas.material.view.MainActivity
+import local.kas.material.view.base_fragments.BaseFragment
 
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate) {
 
     private val appTheme = "theme"
 
     private val keyPref = "key"
-
-
-    private var _binding: FragmentSettingsBinding? = null
-    private val binding: FragmentSettingsBinding
-        get() = _binding!!
-
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

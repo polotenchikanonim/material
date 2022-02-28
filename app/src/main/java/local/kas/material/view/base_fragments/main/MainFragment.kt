@@ -1,14 +1,16 @@
-package local.kas.material.view.main
+package local.kas.material.view.base_fragments.main
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.view.*
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.google.android.material.bottomappbar.BottomAppBar
@@ -16,64 +18,49 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import local.kas.material.R
 import local.kas.material.databinding.MainFragmentBinding
-
 import local.kas.material.view.MainActivity
-import local.kas.material.view.settings.SettingsFragment
+import local.kas.material.view.base_fragments.BaseFragment
+import local.kas.material.view.base_fragments.settings.SettingsFragment
 import local.kas.material.viewmodel.main.PictureOfTheDayData
 import local.kas.material.viewmodel.main.PictureOfTheDayViewModel
 
 
-class MainFragment : Fragment() {
+class MainFragment : BaseFragment<MainFragmentBinding>(MainFragmentBinding::inflate)  {
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
+    private var isMain = true
 
-    private var _binding: MainFragmentBinding? = null
-    private val binding: MainFragmentBinding
-        get() = _binding!!
 
     private val viewModel: PictureOfTheDayViewModel by lazy {
         ViewModelProvider(this)[PictureOfTheDayViewModel::class.java]
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = MainFragmentBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getData().observe(viewLifecycleOwner) {
-            renderData(it)
+        with(viewModel) {
+            getData().observe(viewLifecycleOwner) {
+                renderData(it)
+            }
+            sendRequest()
         }
-        viewModel.sendRequest()
-
-        binding.textInputLayout.setEndIconOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW).apply {
-                data =
-                    Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
-            })
-        }
-
-
+        setListeners()
 //        initBottomSheet()  // doesn't work :(  fixme IMPORTANT
 //        initMyBottomSheet()  // doesn't correct work :( fixme IMPORTANT
-        val mainActivity = (requireActivity() as MainActivity)
-        if (mainActivity.supportActionBar == null)  {
-            (requireActivity() as MainActivity).setSupportActionBar(binding.bottomAppBar)
-        }
+        (requireActivity() as MainActivity).setSupportActionBar(binding.bottomAppBar)
         setHasOptionsMenu(true)
+    }
 
-        binding.fab.setOnClickListener {
-            with(binding) {
+
+    private fun setListeners() {
+        with(binding) {
+            textInputLayout.setEndIconOnClickListener {
+                startActivity(Intent(Intent.ACTION_VIEW).apply {
+                    data = Uri.parse(
+                        "https://en.wikipedia.org/wiki/${inputEditText.text.toString()}"
+                    )
+                })
+            }
+            fab.setOnClickListener {
                 if (isMain) {
                     with(bottomAppBar) {
                         navigationIcon = null
@@ -92,12 +79,12 @@ class MainFragment : Fragment() {
                     }
                     fab.setImageResource(R.drawable.ic_plus_fab)
                 }
+                isMain = !isMain
             }
-            isMain = !isMain
         }
-    }
 
-    private var isMain = true
+
+    }
 
     private fun renderData(pictureOfTheDayData: PictureOfTheDayData) {
         when (pictureOfTheDayData) {
@@ -125,6 +112,7 @@ class MainFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        println()
         when (item.itemId) {
             R.id.app_bar_fav -> {
                 Toast.makeText(requireContext(), "app_bar_fav", Toast.LENGTH_SHORT).show()
@@ -190,4 +178,7 @@ class MainFragment : Fragment() {
         bottomSheetDialog.setContentView(view)
         bottomSheetDialog.show()
     }
+
+
+
 }
