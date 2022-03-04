@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import local.kas.material.BuildConfig
-import local.kas.material.repository.PDOServerResponse
+import local.kas.material.repository.PictureOfTheDayDTO
 import local.kas.material.repository.PictureOfTheDayRetrofitImpl
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,6 +15,7 @@ class PictureOfTheDayViewModel(
     private val liveData: MutableLiveData<PictureOfTheDayData> = MutableLiveData(),
     private val pictureOfTheDayRetrofitImpl: PictureOfTheDayRetrofitImpl = PictureOfTheDayRetrofitImpl()
 ) : ViewModel() {
+
     fun getData(): LiveData<PictureOfTheDayData> {
         return liveData
     }
@@ -23,10 +24,10 @@ class PictureOfTheDayViewModel(
         liveData.postValue(PictureOfTheDayData.Loading(0))
         pictureOfTheDayRetrofitImpl.getRetrofitImpl().getPictureOfTheDay(BuildConfig.NASA_API_KEY)
             .enqueue(
-                object : Callback<PDOServerResponse> {
+                object : Callback<PictureOfTheDayDTO> {
                     override fun onResponse(
-                        call: Call<PDOServerResponse>,
-                        response: Response<PDOServerResponse>
+                        call: Call<PictureOfTheDayDTO>,
+                        response: Response<PictureOfTheDayDTO>
                     ) {
                         if (response.isSuccessful) {
                             response.body()?.let {
@@ -37,7 +38,7 @@ class PictureOfTheDayViewModel(
                         }
                     }
 
-                    override fun onFailure(call: Call<PDOServerResponse>, t: Throwable) {
+                    override fun onFailure(call: Call<PictureOfTheDayDTO>, t: Throwable) {
                         println()
                     }
 

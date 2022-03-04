@@ -5,9 +5,19 @@
             android:id="@+id/navigation_one"
             android:icon="@drawable/ic_archive"
             android:title="@string/_1" />
+
         <item
             android:id="@+id/navigation_two"
             android:icon="@drawable/ic_send"
             android:title="@string/_2" />
+
+        <item
+            android:id="@+id/navigation_three"
+            android:title="@string/_4_1" />
+
+        <item
+            android:id="@+id/navigation_four"
+            android:title="@string/_4_2" />
+
     </group>
 </menu>

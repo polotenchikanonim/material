@@ -4,4 +4,6 @@
     <!--    <dimen name="textSizeMain">25sp</dimen>-->
     <dimen name="textSizeBottomS">25sp</dimen>
     <dimen name="dp_16">16dp</dimen>
+    <dimen name="dp_160">160dp</dimen>
+    <dimen name="sp_20">20sp</dimen>
 </resources>

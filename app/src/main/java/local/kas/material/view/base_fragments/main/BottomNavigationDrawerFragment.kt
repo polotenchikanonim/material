@@ -8,6 +8,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import local.kas.material.R
 import local.kas.material.databinding.BottomNavigationLayoutBinding
 import local.kas.material.view.base_fragments.bottom.BottomNavigationFragment
+import local.kas.material.view.base_fragments.lesson_four.ConstraintFragment
+import local.kas.material.view.base_fragments.lesson_four.CoordinatorFragment
 import local.kas.material.view.base_fragments.slider.SliderFragment
 
 class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
@@ -35,6 +37,18 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
                 R.id.navigation_two -> {
                     requireActivity().supportFragmentManager.beginTransaction()
                         .replace(R.id.container, BottomNavigationFragment.newInstance())
+                        .addToBackStack("1")
+                        .commit()
+                }
+                R.id.navigation_three -> {
+                    requireActivity().supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, ConstraintFragment.newInstance())
+                        .addToBackStack("1")
+                        .commit()
+                }
+                R.id.navigation_four -> {
+                    requireActivity().supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, CoordinatorFragment.newInstance())
                         .addToBackStack("1")
                         .commit()
                 }

@@ -2,7 +2,7 @@ package local.kas.material.repository
 
 import com.google.gson.annotations.SerializedName
 
-data class PDOServerResponse(
+data class PictureOfTheDayDTO(
     val copyright: String,
     val date: String,
     val explanation: String,

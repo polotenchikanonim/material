@@ -6,7 +6,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class PictureOfTheDayRetrofitImpl {
 
-
     private val baseUrl = "https://api.nasa.gov/"
 
     fun getRetrofitImpl(): PictureOfTheDayAPI {

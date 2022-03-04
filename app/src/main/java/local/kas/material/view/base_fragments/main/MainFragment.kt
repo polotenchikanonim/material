@@ -25,7 +25,7 @@ import local.kas.material.viewmodel.main.PictureOfTheDayData
 import local.kas.material.viewmodel.main.PictureOfTheDayViewModel
 
 
-class MainFragment : BaseFragment<MainFragmentBinding>(MainFragmentBinding::inflate)  {
+class MainFragment : BaseFragment<MainFragmentBinding>(MainFragmentBinding::inflate) {
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private var isMain = true
@@ -174,11 +174,10 @@ class MainFragment : BaseFragment<MainFragmentBinding>(MainFragmentBinding::infl
         val bottomSheetDialog =
             BottomSheetDialog(requireContext(), R.style.SheetDialog)
         val view = layoutInflater.inflate(R.layout.bottom_sheet, binding.bottom, false)
-        binding.bottom
+
         bottomSheetDialog.setContentView(view)
         bottomSheetDialog.show()
     }
-
 
 
 }
