@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import local.kas.material.R
 import local.kas.material.databinding.ActivityMainBinding
-import local.kas.material.view.base_fragments.lesson_four.CoordinatorFragment
+import local.kas.material.view.base_fragments.main.MainFragment
 
 
 //Создайте первый экран приложения с фотографией дня. done
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, CoordinatorFragment.newInstance()).commit()
+                .replace(R.id.container, MainFragment.newInstance()).commit()
         }
     }
 
