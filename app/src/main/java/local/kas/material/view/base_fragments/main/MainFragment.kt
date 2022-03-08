@@ -3,6 +3,9 @@ package local.kas.material.view.base_fragments.main
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.transition.ChangeBounds
+import android.transition.ChangeImageTransform
+import android.transition.TransitionManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
@@ -53,6 +56,8 @@ class MainFragment : BaseFragment<MainFragmentBinding>(MainFragmentBinding::infl
             (requireActivity() as MainActivity).setSupportActionBar(bottomAppBar)
             with(imageView) {
                 setOnClickListener {
+                    TransitionManager.beginDelayedTransition(
+                        root, ChangeImageTransform().apply { duration = 3000 })
                     scaleType = if (scaleType == ImageView.ScaleType.CENTER_CROP) {
                         ImageView.ScaleType.CENTER_INSIDE
                     } else {

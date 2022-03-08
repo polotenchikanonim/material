@@ -27,6 +27,11 @@
             android:id="@+id/navigation_five_explode"
             android:title="@string/_5_explode" />
 
+        <item
+            android:id="@+id/navigation_five_object_animator"
+            android:title="@string/objectAnimator" />
+
+
 
     </group>
 </menu>

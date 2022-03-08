@@ -67,6 +67,11 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
                             .addToBackStack(null)
                             .commit()
                     }
+                    R.id.navigation_five_object_animator -> {
+                        beginTransaction().replace(R.id.container, ExplodeFragment.newInstance())
+                            .addToBackStack(null)
+                            .commit()
+                    }
                 }
                 dismiss()
                 true

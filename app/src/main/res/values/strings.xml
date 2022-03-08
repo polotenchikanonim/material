@@ -126,5 +126,10 @@
     <string name="_5">Урок 5</string>
     <string name="tap">TAP</string>
     <string name="_5_explode">Урок 5 explode</string>
+    <string name="trajectory">trajectory</string>
+    <string name="option_2">Option 2</string>
+    <string name="option_1">Option 1</string>
+    <string name="objectanimator">objectAnimator</string>
+    <string name="objectAnimator">objectAnimator</string>
 
 </resources>
