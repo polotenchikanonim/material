@@ -19,5 +19,14 @@
             android:id="@+id/navigation_four"
             android:title="@string/_4_2" />
 
+        <item
+            android:id="@+id/navigation_five"
+            android:title="@string/_5" />
+
+        <item
+            android:id="@+id/navigation_five_explode"
+            android:title="@string/_5_explode" />
+
+
     </group>
 </menu>

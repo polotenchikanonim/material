@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -46,8 +47,21 @@ class MainFragment : BaseFragment<MainFragmentBinding>(MainFragmentBinding::infl
         setListeners()
 //        initBottomSheet()  // doesn't work :(  fixme IMPORTANT
 //        initMyBottomSheet()  // doesn't correct work :( fixme IMPORTANT
-        (requireActivity() as MainActivity).setSupportActionBar(binding.bottomAppBar)
+
         setHasOptionsMenu(true)
+        with(binding) {
+            (requireActivity() as MainActivity).setSupportActionBar(bottomAppBar)
+            with(imageView) {
+                setOnClickListener {
+                    scaleType = if (scaleType == ImageView.ScaleType.CENTER_CROP) {
+                        ImageView.ScaleType.CENTER_INSIDE
+                    } else {
+                        ImageView.ScaleType.CENTER_CROP
+                    }
+                }
+            }
+
+        }
     }
 
 
@@ -99,7 +113,10 @@ class MainFragment : BaseFragment<MainFragmentBinding>(MainFragmentBinding::infl
                 //pictureOfTheDayData.serverResponse.explanation
                 with(binding) {
                     pictureOfTheDayData.pdoServerResponse.let {
-                        imageView.load(it.url)
+                        with(imageView) {
+//                            load(it.url)
+                            load("https://raw.githubusercontent.com/mentatusn/material_1728_3/master/app/src/main/res/drawable/earth.png")
+                        }
                     }
                 }
             }
@@ -112,14 +129,13 @@ class MainFragment : BaseFragment<MainFragmentBinding>(MainFragmentBinding::infl
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        println()
         when (item.itemId) {
             R.id.app_bar_fav -> {
                 Toast.makeText(requireContext(), "app_bar_fav", Toast.LENGTH_SHORT).show()
             }
             R.id.app_bar_settings -> {
                 requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, SettingsFragment.newInstance()).addToBackStack("")
+                    .replace(R.id.container, SettingsFragment.newInstance()).addToBackStack(null)
                     .commit()
             }
             android.R.id.home -> {
@@ -178,6 +194,14 @@ class MainFragment : BaseFragment<MainFragmentBinding>(MainFragmentBinding::infl
         bottomSheetDialog.setContentView(view)
         bottomSheetDialog.show()
     }
+
+//    override fun onResume() {
+//        super.onResume()
+//        requireActivity().supportFragmentManager.beginTransaction()
+//            .replace(R.id.container, ExplodeFragment.newInstance())
+//            .addToBackStack(null)
+//            .commit()
+//    }
 
 
 }

@@ -121,5 +121,10 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="animate">Animate</string>
+    <string name="example">example</string>
+    <string name="_5">Урок 5</string>
+    <string name="tap">TAP</string>
+    <string name="_5_explode">Урок 5 explode</string>
 
 </resources>
