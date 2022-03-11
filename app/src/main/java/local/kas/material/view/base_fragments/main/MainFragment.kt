@@ -3,7 +3,6 @@ package local.kas.material.view.base_fragments.main
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.transition.ChangeBounds
 import android.transition.ChangeImageTransform
 import android.transition.TransitionManager
 import android.util.Log
@@ -25,6 +24,7 @@ import local.kas.material.databinding.MainFragmentBinding
 import local.kas.material.view.MainActivity
 import local.kas.material.view.base_fragments.BaseFragment
 import local.kas.material.view.base_fragments.settings.SettingsFragment
+import local.kas.material.view.base_fragments.tasks.RecyclerFragment
 import local.kas.material.viewmodel.main.PictureOfTheDayData
 import local.kas.material.viewmodel.main.PictureOfTheDayViewModel
 
@@ -195,18 +195,17 @@ class MainFragment : BaseFragment<MainFragmentBinding>(MainFragmentBinding::infl
         val bottomSheetDialog =
             BottomSheetDialog(requireContext(), R.style.SheetDialog)
         val view = layoutInflater.inflate(R.layout.bottom_sheet, binding.bottom, false)
-
         bottomSheetDialog.setContentView(view)
         bottomSheetDialog.show()
     }
 
-//    override fun onResume() {
-//        super.onResume()
-//        requireActivity().supportFragmentManager.beginTransaction()
-//            .replace(R.id.container, ExplodeFragment.newInstance())
-//            .addToBackStack(null)
-//            .commit()
-//    }
+    override fun onResume() {
+        super.onResume()
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.container, RecyclerFragment.newInstance())
+            .addToBackStack(null)
+            .commit()
+    }
 
 
 }

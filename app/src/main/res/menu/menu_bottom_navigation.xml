@@ -31,7 +31,8 @@
             android:id="@+id/navigation_five_object_animator"
             android:title="@string/objectAnimator" />
 
-
+        <item android:id="@+id/lesson_six"
+            android:title="@string/lesson_6"/>
 
     </group>
 </menu>
