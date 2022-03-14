@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import local.kas.material.BuildConfig
-import local.kas.material.repository.PictureOfTheDayDTO
-import local.kas.material.repository.PictureOfTheDayRetrofitImpl
+import local.kas.material.repository.picture_of_day.PictureOfTheDayDTO
+import local.kas.material.repository.picture_of_day.PictureOfTheDayRetrofitImpl
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

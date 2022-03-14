@@ -8,6 +8,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import local.kas.material.R
 import local.kas.material.databinding.BottomNavigationLayoutBinding
 import local.kas.material.view.base_fragments.animation.AnimationFragment
+import local.kas.material.view.base_fragments.animation.ObjectAnimateFragment
 import local.kas.material.view.base_fragments.animation.explode.ExplodeFragment
 import local.kas.material.view.base_fragments.bottom.BottomNavigationFragment
 import local.kas.material.view.base_fragments.lesson_four.ConstraintFragment
@@ -68,7 +69,7 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
                             .commit()
                     }
                     R.id.navigation_five_object_animator -> {
-                        beginTransaction().replace(R.id.container, ExplodeFragment.newInstance())
+                        beginTransaction().replace(R.id.container, ObjectAnimateFragment.newInstance())
                             .addToBackStack(null)
                             .commit()
                     }

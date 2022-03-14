@@ -10,12 +10,14 @@
         app:srcCompat="@drawable/bg_earth" />
 
     <FrameLayout
-        android:id="@+id/transparent_background"
+        android:id="@+id/transparentBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
-        android:background="@android:color/white"
+        android:background="@color/dark_mode"
         android:clickable="false" />
+<!--    style="@style/BackgroundColorMode"-->
+
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -92,4 +94,5 @@
             android:elevation="10dp"
             app:srcCompat="@drawable/ic_plus_fab" />
     </FrameLayout>
+
 </FrameLayout>

@@ -1,4 +1,4 @@
-package local.kas.material.repository
+package local.kas.material.repository.picture_of_day
 
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit

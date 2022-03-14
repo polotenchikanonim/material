@@ -23,8 +23,9 @@ import local.kas.material.R
 import local.kas.material.databinding.MainFragmentBinding
 import local.kas.material.view.MainActivity
 import local.kas.material.view.base_fragments.BaseFragment
+import local.kas.material.view.base_fragments.animation.ObjectAnimateFragment
 import local.kas.material.view.base_fragments.settings.SettingsFragment
-import local.kas.material.view.base_fragments.tasks.RecyclerFragment
+import local.kas.material.view.base_fragments.tasks.TasksFragment
 import local.kas.material.viewmodel.main.PictureOfTheDayData
 import local.kas.material.viewmodel.main.PictureOfTheDayViewModel
 
@@ -202,7 +203,7 @@ class MainFragment : BaseFragment<MainFragmentBinding>(MainFragmentBinding::infl
     override fun onResume() {
         super.onResume()
         requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.container, RecyclerFragment.newInstance())
+            .replace(R.id.container, ObjectAnimateFragment.newInstance())
             .addToBackStack(null)
             .commit()
     }

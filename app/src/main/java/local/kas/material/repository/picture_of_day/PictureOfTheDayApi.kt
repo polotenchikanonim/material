@@ -1,4 +1,4 @@
-package local.kas.material.repository
+package local.kas.material.repository.picture_of_day
 
 import retrofit2.Call
 import retrofit2.http.GET
