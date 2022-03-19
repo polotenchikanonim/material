@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import local.kas.material.R
 import local.kas.material.databinding.BottomNavigationLayoutBinding
+import local.kas.material.view.base_fragments.StateListAnimatorFragment
 import local.kas.material.view.base_fragments.animation.AnimationFragment
 import local.kas.material.view.base_fragments.animation.ObjectAnimateFragment
 import local.kas.material.view.base_fragments.animation.explode.ExplodeFragment
@@ -33,7 +34,6 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
         binding.navigationView.setNavigationItemSelectedListener { menu ->
             with(requireActivity().supportFragmentManager) {
                 when (menu.itemId) {
-
                     R.id.navigation_one -> {
                         beginTransaction()
                             .replace(R.id.container, SliderFragment.newInstance()).addToBackStack("")
@@ -68,8 +68,18 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
                             .addToBackStack(null)
                             .commit()
                     }
-                    R.id.navigation_five_object_animator -> {
-                        beginTransaction().replace(R.id.container, ObjectAnimateFragment.newInstance())
+                    R.id.navigationFiveObjectAnimator -> {
+                        beginTransaction().replace(
+                            R.id.container, ObjectAnimateFragment.newInstance()
+                        )
+                            .addToBackStack(null)
+                            .commit()
+                    }
+                    R.id.navigationFiveStateListAnimator -> {
+                        beginTransaction().replace(
+                            R.id.container,
+                            StateListAnimatorFragment.newInstance()
+                        )
                             .addToBackStack(null)
                             .commit()
                     }

@@ -48,7 +48,7 @@ class ObjectAnimateFragment :
                     .apply { duration }.start()
                 anim(optionTwoContainer, 1f)
                 anim(optionOneContainer, 1f)
-                animContainer(transparentBackground,0.8f)
+                animContainer(transparentBackground, 0.8f)
             } else {
                 ObjectAnimator.ofFloat(plusImageview, View.ROTATION, 0f, 405f)
                     .apply { duration = animDuration }.start()

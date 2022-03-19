@@ -23,14 +23,15 @@ import local.kas.material.R
 import local.kas.material.databinding.MainFragmentBinding
 import local.kas.material.view.MainActivity
 import local.kas.material.view.base_fragments.BaseFragment
-import local.kas.material.view.base_fragments.animation.ObjectAnimateFragment
+import local.kas.material.view.base_fragments.StateListAnimatorFragment
 import local.kas.material.view.base_fragments.settings.SettingsFragment
-import local.kas.material.view.base_fragments.tasks.TasksFragment
 import local.kas.material.viewmodel.main.PictureOfTheDayData
 import local.kas.material.viewmodel.main.PictureOfTheDayViewModel
 
 
-class MainFragment : BaseFragment<MainFragmentBinding>(MainFragmentBinding::inflate) {
+class MainFragment :
+//    Fragment()
+    BaseFragment<MainFragmentBinding>(MainFragmentBinding::inflate) {
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private var isMain = true
@@ -203,7 +204,7 @@ class MainFragment : BaseFragment<MainFragmentBinding>(MainFragmentBinding::infl
     override fun onResume() {
         super.onResume()
         requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.container, ObjectAnimateFragment.newInstance())
+            .replace(R.id.container, StateListAnimatorFragment.newInstance())
             .addToBackStack(null)
             .commit()
     }

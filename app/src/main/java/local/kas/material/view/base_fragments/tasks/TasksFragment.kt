@@ -1,12 +1,15 @@
 package local.kas.material.view.base_fragments.tasks
 
+//import local.kas.material.databinding.FragmentRecyclerBinding
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import local.kas.material.databinding.FragmentTasksBinding
-//import local.kas.material.databinding.FragmentRecyclerBinding
-import local.kas.material.model.tasks.*
+import local.kas.material.model.tasks.TYPE_EARTH
+import local.kas.material.model.tasks.TYPE_MARS
+import local.kas.material.model.tasks.TYPE_SYSTEM
+import local.kas.material.model.tasks.Task
 import local.kas.material.view.base_fragments.BaseFragment
 import local.kas.material.viewmodel.tasks.TasksViewModel
 

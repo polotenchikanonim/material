@@ -123,15 +123,21 @@
     </string>
     <string name="animate">Animate</string>
     <string name="example">example</string>
-    <string name="_5">Урок 5</string>
+
     <string name="tap">TAP</string>
-    <string name="_5_explode">Урок 5 explode</string>
+
     <string name="trajectory">trajectory</string>
     <string name="option_2">Option 2</string>
     <string name="option_1">Option 1</string>
-    <string name="objectanimator">objectAnimator</string>
-    <string name="objectAnimator">objectAnimator</string>
-    <string name="lesson_6">lesson 6</string>
+
+    <string name="_5">Урок 5</string>
+    <string name="_5_explode">Урок 5 explode</string>
+    <string name="objectAnimator">Урок 5 objectAnimator</string>
+    <string name="stateListAnimator">Урок 5 StateListAnimator</string>
+    <string name="constraintSet">Урок 5 ConstraintSet</string>
+
+    <string name="lesson_6">Урок 6</string>
+    <string name="state_list_animator_example">StateListAnimator Example</string>
 
 
 </resources>

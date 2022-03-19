@@ -28,11 +28,20 @@
             android:title="@string/_5_explode" />
 
         <item
-            android:id="@+id/navigation_five_object_animator"
+            android:id="@+id/navigationFiveObjectAnimator"
             android:title="@string/objectAnimator" />
 
-        <item android:id="@+id/lesson_six"
-            android:title="@string/lesson_6"/>
+        <item
+            android:id="@+id/navigationFiveStateListAnimator"
+            android:title="@string/stateListAnimator" />
+
+<!--        <item-->
+<!--            android:id="@+id/navigationFiveConstraintSet"-->
+<!--            android:title="@string/constraintSet" />-->
+
+        <item
+            android:id="@+id/lessonSix"
+            android:title="@string/lesson_6" />
 
     </group>
 </menu>

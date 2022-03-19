@@ -16,7 +16,7 @@
         android:animateLayoutChanges="true"
         android:background="@color/dark_mode"
         android:clickable="false" />
-<!--    style="@style/BackgroundColorMode"-->
+    <!--    style="@style/BackgroundColorMode"-->
 
 
     <FrameLayout
