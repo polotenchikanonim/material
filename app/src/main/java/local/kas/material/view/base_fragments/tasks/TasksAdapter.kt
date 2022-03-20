@@ -1,8 +1,11 @@
 package local.kas.material.view.base_fragments.tasks
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.MotionEventCompat
 import androidx.recyclerview.widget.RecyclerView
 import local.kas.material.databinding.RecyclerItemEarthBinding
 import local.kas.material.databinding.RecyclerItemMarsBinding
@@ -12,7 +15,8 @@ import local.kas.material.viewmodel.tasks.MyClickListener
 
 class TasksAdapter(
     private val myClickListener: MyClickListener,
-    var tasks: MutableList<Task>
+    var tasks: MutableList<Task>,
+    private val onStartDragListener: OnStartDragListener
 ) : RecyclerView.Adapter<TasksAdapter.BaseViewHolder>(),
     ItemTouchHelperAdapter {
 
@@ -48,22 +52,12 @@ class TasksAdapter(
     }
 
     abstract inner class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view),
-
         ItemTouchHelperViewAdapter {
         abstract fun bind(task: Task)
-
-        fun removeItem() {
-            tasks.removeAt(layoutPosition)
-            notifyItemRemoved(layoutPosition)
-        }
     }
 
     override fun getItemCount() = tasks.size
 
-    fun addTask(task: Task) {
-        tasks.add(task)
-        notifyItemInserted(itemCount - 1)
-    }
 
     inner class EarthViewHolder(view: View) : BaseViewHolder(view) {
         override fun bind(task: Task) {
@@ -78,18 +72,22 @@ class TasksAdapter(
 
     inner class MarsViewHolder(view: View) : BaseViewHolder(view) {
 
+        @SuppressLint("ClickableViewAccessibility")
         override fun bind(task: Task) {
             RecyclerItemMarsBinding.bind(itemView).apply {
                 title.text = task.title
-                itemView.setOnClickListener {
-                    myClickListener.onItemClick(task)
+                icon.setOnTouchListener { _, motionEvent ->
+                    if (MotionEventCompat.getActionMasked(motionEvent) == MotionEvent.ACTION_DOWN) {
+                        onStartDragListener.onStartDrag(this@MarsViewHolder)
+                    }
+                    false
                 }
-                moveItemUp.setOnClickListener {
-                    moveUp(layoutPosition)
-                }
-                moveItemDown.setOnClickListener {
-                    moveDown(layoutPosition)
-                }
+//                itemView.setOnClickListener {
+//                    myClickListener.onItemClick(task)
+//                }
+//                moveItemUp.setOnClickListener { moveUp(layoutPosition) }
+//                moveItemDown.setOnClickListener { moveDown(layoutPosition) }
+
             }
         }
 
@@ -136,5 +134,10 @@ class TasksAdapter(
             }
             notifyItemMoved(layoutPosition, newLayoutPosition)
         }
+    }
+
+    fun addTask(task: Task) {
+        tasks.add(task)
+        notifyItemInserted(itemCount - 1)
     }
 }

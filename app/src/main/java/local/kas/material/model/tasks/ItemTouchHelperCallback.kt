@@ -6,12 +6,8 @@ import local.kas.material.view.base_fragments.tasks.TasksAdapter
 
 class ItemTouchHelperCallback(private val adapter: TasksAdapter) : ItemTouchHelper.Callback() {
 
-    override fun isLongPressDragEnabled(): Boolean {
-        return true
-    }
-
-//    override fun isItemViewSwipeEnabled(): Boolean {
-//        return super.isItemViewSwipeEnabled()
+//    override fun isLongPressDragEnabled(): Boolean {
+//        return true
 //    }
 
     override fun getMovementFlags(

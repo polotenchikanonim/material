@@ -15,6 +15,16 @@ import local.kas.material.viewmodel.tasks.TasksViewModel
 class TasksFragment : BaseFragment<FragmentTasksBinding>(FragmentTasksBinding::inflate) {
 
     private lateinit var adapter: TasksAdapter
+    lateinit var itemTouchHelper: ItemTouchHelper
+    val tasks = arrayListOf(
+        Task("Earth"),
+        Task("Earth"),
+        Task("System", type = TYPE_SYSTEM),
+        Task("Earth"),
+        Task("Mars", type = TYPE_MARS),
+        Task("Earth"),
+        Task("Earth")
+    )
 
     private val citiesViewModel: TasksViewModel by lazy {
         ViewModelProvider(this)[TasksViewModel::class.java]
@@ -25,21 +35,17 @@ class TasksFragment : BaseFragment<FragmentTasksBinding>(FragmentTasksBinding::i
         with(binding) {
             adapter = TasksAdapter(
                 { Toast.makeText(binding.root.context, it.title, Toast.LENGTH_SHORT).show() },
-                arrayListOf(
-                    Task("Earth"),
-                    Task("Earth"),
-                    Task("System", type = TYPE_SYSTEM),
-                    Task("Earth"),
-                    Task("Mars", type = TYPE_MARS),
-                    Task("Earth"),
-                    Task("Earth")
-                )
-            )
+                tasks, {
+                    itemTouchHelper.startDrag(it)
+                })
             recyclerView.adapter = adapter
+            itemTouchHelper = ItemTouchHelper(ItemTouchHelperCallback(adapter))
+            itemTouchHelper.attachToRecyclerView(recyclerView)
             fab.setOnClickListener {
                 addTask()
             }
-            ItemTouchHelper(ItemTouchHelperCallback(adapter)).attachToRecyclerView(recyclerView)
+
+
         }
 
 
