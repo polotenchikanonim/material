@@ -36,7 +36,8 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
                 when (menu.itemId) {
                     R.id.navigation_one -> {
                         beginTransaction()
-                            .replace(R.id.container, SliderFragment.newInstance()).addToBackStack("")
+                            .replace(R.id.container, SliderFragment.newInstance())
+                            .addToBackStack("")
                             .commit()
                     }
                     R.id.navigation_two -> {

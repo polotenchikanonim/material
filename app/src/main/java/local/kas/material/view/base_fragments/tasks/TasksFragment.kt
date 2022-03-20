@@ -5,11 +5,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import local.kas.material.databinding.FragmentTasksBinding
-import local.kas.material.model.tasks.TYPE_EARTH
-import local.kas.material.model.tasks.TYPE_MARS
-import local.kas.material.model.tasks.TYPE_SYSTEM
-import local.kas.material.model.tasks.Task
+import local.kas.material.model.tasks.*
 import local.kas.material.view.base_fragments.BaseFragment
 import local.kas.material.viewmodel.tasks.TasksViewModel
 
@@ -41,6 +39,7 @@ class TasksFragment : BaseFragment<FragmentTasksBinding>(FragmentTasksBinding::i
             fab.setOnClickListener {
                 addTask()
             }
+            ItemTouchHelper(ItemTouchHelperCallback(adapter)).attachToRecyclerView(recyclerView)
         }
 
 

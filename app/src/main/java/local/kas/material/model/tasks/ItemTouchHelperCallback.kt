@@ -2,8 +2,17 @@ package local.kas.material.model.tasks
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import local.kas.material.view.base_fragments.tasks.TasksAdapter
 
-class ItemTouchHelperCallback : ItemTouchHelper.Callback() {
+class ItemTouchHelperCallback(private val adapter: TasksAdapter) : ItemTouchHelper.Callback() {
+
+    override fun isLongPressDragEnabled(): Boolean {
+        return true
+    }
+
+//    override fun isItemViewSwipeEnabled(): Boolean {
+//        return super.isItemViewSwipeEnabled()
+//    }
 
     override fun getMovementFlags(
         recyclerView: RecyclerView,
@@ -19,10 +28,23 @@ class ItemTouchHelperCallback : ItemTouchHelper.Callback() {
         viewHolder: RecyclerView.ViewHolder,
         target: RecyclerView.ViewHolder
     ): Boolean {
-        TODO("Not yet implemented")
+        adapter.onItemMove(viewHolder.adapterPosition, target.adapterPosition)
+        return true
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-        TODO("Not yet implemented")
+        adapter.onItemDismiss(viewHolder.adapterPosition)
+    }
+
+    override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
+        if (actionState != ItemTouchHelper.ACTION_STATE_IDLE) {
+            (viewHolder as ItemTouchHelperViewAdapter).onItemSelected(viewHolder.itemView)
+        }
+        super.onSelectedChanged(viewHolder, actionState)
+    }
+
+    override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
+        (viewHolder as ItemTouchHelperViewAdapter).onItemClear(viewHolder.itemView)
+        super.clearView(recyclerView, viewHolder)
     }
 }

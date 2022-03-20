@@ -9,7 +9,11 @@ import com.google.android.material.appbar.AppBarLayout
 class NestedBehavior(context: Context?, attrs: AttributeSet) :
     CoordinatorLayout.Behavior<View>(context, attrs) {
 
-    override fun layoutDependsOn(parent: CoordinatorLayout, child: View, dependency: View): Boolean {
+    override fun layoutDependsOn(
+        parent: CoordinatorLayout,
+        child: View,
+        dependency: View
+    ): Boolean {
         return dependency is AppBarLayout
 
     }

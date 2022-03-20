@@ -20,16 +20,6 @@
         android:src="@drawable/bg_system" />
 
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/text"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_alignParentEnd="true"-->
-    <!--        android:layout_centerVertical="true"-->
-    <!--        android:layout_marginEnd="@dimen/dp_32"-->
-    <!--        android:text="@string/system" />-->
-
-
     <TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"

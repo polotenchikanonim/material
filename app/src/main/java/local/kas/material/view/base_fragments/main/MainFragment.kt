@@ -24,6 +24,7 @@ import local.kas.material.databinding.MainFragmentBinding
 import local.kas.material.view.MainActivity
 import local.kas.material.view.base_fragments.BaseFragment
 import local.kas.material.view.base_fragments.settings.SettingsFragment
+import local.kas.material.view.base_fragments.tasks.TasksFragment
 import local.kas.material.viewmodel.main.PictureOfTheDayData
 import local.kas.material.viewmodel.main.PictureOfTheDayViewModel
 
@@ -202,13 +203,13 @@ class MainFragment :
         bottomSheetDialog.show()
     }
 
-//    override fun onResume() {
-//        super.onResume()
-//        requireActivity().supportFragmentManager.beginTransaction()
-//            .replace(R.id.container, StateListAnimatorFragment.newInstance())
-//            .addToBackStack(null)
-//            .commit()
-//    }
+    override fun onResume() {
+        super.onResume()
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.container, TasksFragment.newInstance())
+            .addToBackStack(null)
+            .commit()
+    }
 
 
 }

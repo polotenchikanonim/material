@@ -10,7 +10,11 @@ import kotlin.math.abs
 class ButtonBehavior(context: Context?, attrs: AttributeSet? = null) :
     CoordinatorLayout.Behavior<View>(context, attrs) {
 
-    override fun layoutDependsOn(parent: CoordinatorLayout, child: View, dependency: View): Boolean {
+    override fun layoutDependsOn(
+        parent: CoordinatorLayout,
+        child: View,
+        dependency: View
+    ): Boolean {
         return dependency is AppBarLayout
 
     }

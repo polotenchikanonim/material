@@ -7,16 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import local.kas.material.databinding.RecyclerItemEarthBinding
 import local.kas.material.databinding.RecyclerItemMarsBinding
 import local.kas.material.databinding.RecyclerItemSystemBinding
-import local.kas.material.model.tasks.ItemTouchHelperAdapter
-import local.kas.material.model.tasks.TYPE_EARTH
-import local.kas.material.model.tasks.TYPE_MARS
-import local.kas.material.model.tasks.Task
+import local.kas.material.model.tasks.*
 import local.kas.material.viewmodel.tasks.MyClickListener
 
 class TasksAdapter(
     private val myClickListener: MyClickListener,
     var tasks: MutableList<Task>
-) : RecyclerView.Adapter<TasksAdapter.BaseViewHolder>(), ItemTouchHelperAdapter {
+) : RecyclerView.Adapter<TasksAdapter.BaseViewHolder>(),
+    ItemTouchHelperAdapter {
 
     override fun getItemViewType(position: Int): Int {
         return tasks[position].type
@@ -49,8 +47,11 @@ class TasksAdapter(
         holder.bind(tasks[position])
     }
 
-    abstract inner class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    abstract inner class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view),
+
+        ItemTouchHelperViewAdapter {
         abstract fun bind(task: Task)
+
         fun removeItem() {
             tasks.removeAt(layoutPosition)
             notifyItemRemoved(layoutPosition)
@@ -83,8 +84,15 @@ class TasksAdapter(
                 itemView.setOnClickListener {
                     myClickListener.onItemClick(task)
                 }
+                moveItemUp.setOnClickListener {
+                    moveUp(layoutPosition)
+                }
+                moveItemDown.setOnClickListener {
+                    moveDown(layoutPosition)
+                }
             }
         }
+
     }
 
 
@@ -108,5 +116,25 @@ class TasksAdapter(
     override fun onItemDismiss(position: Int) {
         tasks.removeAt(position)
         notifyItemRemoved(position)
+    }
+
+    private fun moveUp(layoutPosition: Int) {
+        if (layoutPosition > 0) {
+            tasks.removeAt(layoutPosition).apply {
+                tasks.add(layoutPosition - 1, this)
+            }
+            notifyItemMoved(layoutPosition, layoutPosition - 1)
+        }
+
+    }
+
+    private fun moveDown(layoutPosition: Int) {
+        val newLayoutPosition = layoutPosition + 1
+        if (newLayoutPosition < tasks.size) {
+            tasks.removeAt(layoutPosition).apply {
+                tasks.add(newLayoutPosition, this)
+            }
+            notifyItemMoved(layoutPosition, newLayoutPosition)
+        }
     }
 }

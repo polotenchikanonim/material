@@ -4,22 +4,33 @@
     android:layout_height="@dimen/dp_100"
     android:orientation="horizontal">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icon"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"
+        android:layout_marginStart="@dimen/dp_16"
+        android:src="@drawable/bg_earth" />
+
+
+<!--    <TextView-->
+<!--        android:id="@id/title"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:layout_marginStart="@dimen/dp_16"-->
+<!--        android:layout_toEndOf="@+id/icon"-->
+
+<!--        android:text="@string/earth"-->
+<!--        android:textSize="@dimen/sp_32" />-->
     <TextView
         android:id="@id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginStart="@dimen/dp_16"
-        android:layout_toEndOf="@+id/icon"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:layout_alignParentEnd="true"
         android:text="@string/earth"
         android:textSize="@dimen/sp_32" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_marginStart="@dimen/dp_16"
-        android:id="@+id/icon"
-        android:layout_width="@dimen/dp_100"
-        android:layout_height="@dimen/dp_100"
-        android:src="@drawable/bg_earth" />
 
 
 </RelativeLayout>
