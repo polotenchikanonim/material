@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item android:state_selected="true">
         <objectAnimator
             android:duration="200"
@@ -14,4 +15,5 @@
             android:valueTo="0dp"
             android:valueType="floatType" />
     </item>
+
 </selector>

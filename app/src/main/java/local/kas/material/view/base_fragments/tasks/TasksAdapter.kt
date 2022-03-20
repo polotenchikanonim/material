@@ -102,6 +102,7 @@ class TasksAdapter(
         tasks.removeAt(fromPosition).apply {
             tasks.add(toPosition, this)
         }
+        notifyItemMoved(fromPosition, toPosition)
     }
 
     override fun onItemDismiss(position: Int) {

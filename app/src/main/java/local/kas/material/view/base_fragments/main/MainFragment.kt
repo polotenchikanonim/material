@@ -23,7 +23,6 @@ import local.kas.material.R
 import local.kas.material.databinding.MainFragmentBinding
 import local.kas.material.view.MainActivity
 import local.kas.material.view.base_fragments.BaseFragment
-import local.kas.material.view.base_fragments.StateListAnimatorFragment
 import local.kas.material.view.base_fragments.settings.SettingsFragment
 import local.kas.material.viewmodel.main.PictureOfTheDayData
 import local.kas.material.viewmodel.main.PictureOfTheDayViewModel
@@ -142,11 +141,13 @@ class MainFragment :
             }
             R.id.app_bar_settings -> {
                 requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, SettingsFragment.newInstance()).addToBackStack(null)
+                    .replace(R.id.container, SettingsFragment.newInstance())
+                    .addToBackStack(null)
                     .commit()
             }
             android.R.id.home -> {
-                BottomNavigationDrawerFragment().show(requireActivity().supportFragmentManager, "ff")
+                BottomNavigationDrawerFragment()
+                    .show(requireActivity().supportFragmentManager, null)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -201,13 +202,13 @@ class MainFragment :
         bottomSheetDialog.show()
     }
 
-    override fun onResume() {
-        super.onResume()
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.container, StateListAnimatorFragment.newInstance())
-            .addToBackStack(null)
-            .commit()
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        requireActivity().supportFragmentManager.beginTransaction()
+//            .replace(R.id.container, StateListAnimatorFragment.newInstance())
+//            .addToBackStack(null)
+//            .commit()
+//    }
 
 
 }

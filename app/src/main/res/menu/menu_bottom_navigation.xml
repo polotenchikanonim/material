@@ -35,9 +35,9 @@
             android:id="@+id/navigationFiveStateListAnimator"
             android:title="@string/stateListAnimator" />
 
-<!--        <item-->
-<!--            android:id="@+id/navigationFiveConstraintSet"-->
-<!--            android:title="@string/constraintSet" />-->
+        <item
+            android:id="@+id/navigationFiveConstraintSet"
+            android:title="@string/constraintSet" />
 
         <item
             android:id="@+id/lessonSix"
